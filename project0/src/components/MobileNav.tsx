@@ -11,6 +11,7 @@ import challengeAccent from "../assets/IconsFiles/Accent/chall-accent.svg";
 import analyticsAccent from "../assets/IconsFiles/Accent/anal-accent.svg";
 
 function MobileNav() {
+  const app: string = 'Focus'
   const menuItems = [
     { label: "Dashboard", path: "/dashboard", icon: dashboard, activeIcon: dashboardAccent },
     { label: "Projects", path: "/projects", icon: project, activeIcon: projectAccent },
@@ -20,10 +21,15 @@ function MobileNav() {
 
   return (
     <>
-      <div className="flex items-center justify-between px-4 py-3 bg-white md:hidden">
-        <h1 className="text-lg font-bold text-blue-200">Focus</h1>
-        <div className="w-8 h-8 bg-gray-300 rounded-full"></div>
-      </div>
+     <div className="flex items-center justify-between px-4 py-3 bg-blue-950 md:hidden">
+  <NavLink
+    to="/"
+    className="text-lg font-bold text-blue-200"
+  >
+    {app}
+  </NavLink>
+
+</div>
 
       <div className="md:hidden fixed bottom-0 left-0 right-0">
         <nav className="bg-blue-950 border-t flex justify-around py-2">
@@ -32,7 +38,7 @@ function MobileNav() {
               key={item.label}
               to={item.path}
               end={item.path === "/"}
-              className="flex flex-col items-center text-xs"
+              className="flex flex-col items-center  "
             >
               {({ isActive }) => (
                 <>
