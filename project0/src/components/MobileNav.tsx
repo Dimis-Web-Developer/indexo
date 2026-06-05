@@ -10,8 +10,13 @@ import projectAccent from "../assets/IconsFiles/Accent/proj-accent.svg";
 import challengeAccent from "../assets/IconsFiles/Accent/chall-accent.svg";
 import analyticsAccent from "../assets/IconsFiles/Accent/anal-accent.svg";
 
+import logo from "../assets/logo.png"
+
 function MobileNav() {
-  const app: string = 'Focus'
+const app : {name:string, logo:string}= {
+    name :"Focus",
+    logo
+  }  
   const menuItems = [
     { label: "Dashboard", path: "/dashboard", icon: dashboard, activeIcon: dashboardAccent },
     { label: "Projects", path: "/projects", icon: project, activeIcon: projectAccent },
@@ -21,12 +26,12 @@ function MobileNav() {
 
   return (
     <>
-     <div className="flex items-center justify-between px-4 py-3 bg-blue-950 md:hidden">
+     <div className="flex items-center justify-between py-3 bg-blue-950 md:hidden">
   <NavLink
     to="/"
-    className="text-lg font-bold text-blue-200"
+   
   >
-    {app}
+    <img src={app.logo} alt={app.name} className="w-10 h-10 object-contain"/>
   </NavLink>
 
 </div>
@@ -38,7 +43,7 @@ function MobileNav() {
               key={item.label}
               to={item.path}
               end={item.path === "/"}
-              className="flex flex-col items-center  "
+              className="flex flex-col items-center "
             >
               {({ isActive }) => (
                 <>

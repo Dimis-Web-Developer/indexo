@@ -1,16 +1,22 @@
 import { NavLink } from "react-router-dom";
+
 import dashboard from "../assets/IconsFiles/Neutral/dash.svg";
 import project from "../assets/IconsFiles/Neutral/proj.svg";
 import challenge from "../assets/IconsFiles/Neutral/chall.svg";
 import analytics from "../assets/IconsFiles/Neutral/anal.svg";
+
 import dashboardAccent from "../assets/IconsFiles/Accent/dash-accent.svg";
 import projectAccent from "../assets/IconsFiles/Accent/proj-accent.svg";
 import challengeAccent from "../assets/IconsFiles/Accent/chall-accent.svg";
 import analyticsAccent from "../assets/IconsFiles/Accent/anal-accent.svg";
 
+import logo from "../assets/logo.png"
+
 function DeskTNav() {
-  const app: string = "Focus";
- 
+  const app : {name:string, logo:string}= {
+    name :"Focus",
+    logo
+  }
 
   const menuItems = [
        
@@ -41,16 +47,16 @@ function DeskTNav() {
   ];
 
   return (
-    <aside className="hidden md:flex flex-col w-44 h-screen bg-blue-950 border-r p-4">
+    <aside className="hidden md:flex flex-col w-42 h-screen bg-blue-950 border-r">
       
    <NavLink
   to="/"
-  className="text-2xl font-bold text-blue-200"
+  className="mt-2"
 >
-  {app}
+  <img src={app.logo} alt={app.name} className="w-12 h-12 object-contain"/>
 </NavLink>
 
-      <nav className="flex flex-col gap-6 mt-24 text-gray-400">
+      <nav className="flex flex-col gap-6 mt-18 text-gray-400 px-2">
         {menuItems.map((item) => (
           <NavLink
             key={item.label}
