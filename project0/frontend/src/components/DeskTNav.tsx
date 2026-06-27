@@ -9,13 +9,12 @@ import dashboardAccent from "../assets/IconsFiles/Accent/dash-accent.svg";
 import projectAccent from "../assets/IconsFiles/Accent/proj-accent.svg";
 import challengeAccent from "../assets/IconsFiles/Accent/chall-accent.svg";
 import analyticsAccent from "../assets/IconsFiles/Accent/anal-accent.svg";
-
-import logo from "../assets/logo.png"
+import TopBar from "./TopBar";
 
 function DeskTNav() {
-  const app : {name:string, logo:string}= {
-    name :"Focus",
-    logo
+  const app : {name:string}= {
+    name :"FOCUS",
+   
   }
 
   const menuItems = [
@@ -47,23 +46,16 @@ function DeskTNav() {
   ];
 
   return (
-    <aside className="hidden md:flex flex-col w-42 h-screen bg-blue-950 border-r">
-      
-   <NavLink
-  to="/"
-  className="mt-2"
->
-  <img src={app.logo} alt={app.name} className="w-12 h-12 object-contain"/>
-</NavLink>
-
-      <nav className="flex flex-col gap-6 mt-18 text-gray-400 px-2">
+    <>
+    <aside className="hidden md:flex flex-col w-42 h-screen bg-black border-b-4 border-t-4 border-l-4 border-blue-600">
+      <nav className="flex flex-col gap-1 mt-32 text-gray-400 px-2">
         {menuItems.map((item) => (
           <NavLink
             key={item.label}
             to={item.path}
             end={item.path === "/"}
             className={({ isActive }) =>
-              `flex items-center gap-5 transition ${
+              `flex items-center gap-3 transition ${
                 isActive ? "text-blue-200" : "hover:text-blue-400"
               }`
             }
@@ -75,15 +67,22 @@ function DeskTNav() {
                   alt={item.label}
                   className="w-8 h-8"
                 />
-                <span className="py-1">{item.label}</span>
+                <span className="py-4">{item.label}</span>
               </>
             )}
           </NavLink>
+          
         ))}
+          <NavLink
+  to="/"
+  className="mt-60 text-white  text-center hover:text-blue-400 text-xl"
+>
+{app.name}
+</NavLink>
       </nav>
-
-  
     </aside>
+        <TopBar />
+    </>
   );
 }
 

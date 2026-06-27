@@ -10,12 +10,13 @@ import projectAccent from "../assets/IconsFiles/Accent/proj-accent.svg";
 import challengeAccent from "../assets/IconsFiles/Accent/chall-accent.svg";
 import analyticsAccent from "../assets/IconsFiles/Accent/anal-accent.svg";
 
-import logo from "../assets/logo.png"
+// import logo from "../assets/logo.png"
 
 function MobileNav() {
-const app : {name:string, logo:string}= {
-    name :"Focus",
-    logo
+const app : {name:string
+}= {
+    name :"FOCUS",
+  
   }  
   const menuItems = [
     { label: "Dashboard", path: "/dashboard", icon: dashboard, activeIcon: dashboardAccent },
@@ -26,18 +27,19 @@ const app : {name:string, logo:string}= {
 
   return (
     <>
-     <div className="flex items-center justify-between py-3 bg-blue-950 md:hidden">
+     <div className="flex justify-between py-3 px-3  text-white text-xl bg-black border-b-4 border-blue-600 md:hidden">
   <NavLink
     to="/"
    
   >
-    <img src={app.logo} alt={app.name} className="w-10 h-10 object-contain"/>
-  </NavLink>
+{app.name} 
 
+ </NavLink>
+ 
 </div>
 
       <div className="md:hidden fixed bottom-0 left-0 right-0">
-        <nav className="bg-blue-950 border-t flex justify-around py-2">
+        <nav className="bg-black border-t-4 border-blue-600 flex justify-around py-2">
           {menuItems.map((item) => (
             <NavLink
               key={item.label}
