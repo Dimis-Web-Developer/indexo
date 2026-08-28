@@ -9,6 +9,8 @@ import dashboardAccent from "../assets/IconsFiles/Accent/dash-accent.svg";
 import projectAccent from "../assets/IconsFiles/Accent/proj-accent.svg";
 import challengeAccent from "../assets/IconsFiles/Accent/chall-accent.svg";
 import analyticsAccent from "../assets/IconsFiles/Accent/anal-accent.svg";
+import Login from "./Login";
+import Register from "./Register";
 
 // import logo from "../assets/logo.png"
 
@@ -27,7 +29,7 @@ const app : {name:string
 
   return (
     <>
-     <div className="flex justify-between py-3 px-3  text-white text-xl bg-black border-b-4 border-blue-600 md:hidden">
+     <div className="flex justify-between py-3 px-3  text-white text-xl bg-black border-b-4 border-blue-600 hover:text-gray-400 md:hidden">
   <NavLink
     to="/"
    
@@ -35,7 +37,11 @@ const app : {name:string
 {app.name} 
 
  </NavLink>
- 
+  <div className="ml-auto flex items-center gap-2">
+    <Login />
+    <span className="text-gray-400">/</span>
+    <Register />
+  </div>
 </div>
 
       <div className="md:hidden fixed bottom-0 left-0 right-0">

@@ -1,7 +1,9 @@
 
 function DashBoard() {
   return (
-    <div>DashBoard</div>
+<div className="" >
+  Dashboard
+</div>
   )
 }
 

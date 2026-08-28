@@ -8,7 +8,7 @@ function Register() {
         `text-sm md:text-lg
       ${  isActive
           ? "text-white font-medium"
-          : "text-gray-400 hover:text-blue-400 transition-colors"}
+          : "text-gray-400 hover:text-white transition-colors"}
       `
       }
     >
