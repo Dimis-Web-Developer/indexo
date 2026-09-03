@@ -1,8 +1,44 @@
-const http = require("http");
+const express = require("express");
+const { MongoClient } = require("mongodb");
+require("dotenv").config();
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/html" });
-  res.end("<h1>Hello from Node backend</h1>");
-}).listen(8080, () => {
-  console.log("Backend running at http://localhost:3000");
+const app = express();
+const PORT = 8080;
+
+const client = new MongoClient(process.env.MONGODB_URI);
+
+app.use(express.json());
+
+async function connectDB() {
+  try {
+    await client.connect();
+
+    console.log("Connected to MongoDB");
+  } catch (error) {
+    console.error("MongoDB connection failed:", error);
+  }
+}
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello from Node backend</h1>");
+});
+
+app.post("/api/auth/register", (req, res) => {
+  const { name, email, password } = req.body;
+
+  console.log({
+    name,
+    email,
+    password,
+  });
+
+  res.status(201).json({
+    message: "Registration received",
+  });
+});
+
+connectDB();
+
+app.listen(PORT, () => {
+  console.log(`Backend running at http://localhost:${PORT}`);
 });
