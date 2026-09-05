@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useNavigate} from 'react-router-dom'
 
 function RegisterPage() {
   const [name, setName] = useState("");
@@ -7,7 +8,9 @@ function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate()
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
   setError("");
@@ -27,12 +30,35 @@ function RegisterPage() {
     return;
   }
 
-  console.log({
-    name,
-    email,
-    password,
-  });
-};
+try {
+    const response = await fetch(
+      "http://localhost:8080/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setError(data.message);
+      return;
+    }
+
+    navigate('/login');
+
+  } catch (error) {
+    setError("Unable to connect to server");
+  }
+}
   return (
    <div className="flex flex-col mx-auto p-2">
       <h1 className="text-lg font-bold py-3 ">Create your Focus account</h1>
